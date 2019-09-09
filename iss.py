@@ -77,6 +77,17 @@ def go_to_current_location(turt, lon, lat):
     """Moves the ISS station to its current lat/lon on the map."""
     turt.goto(lon, lat)
     turt.showturtle()
+    turt.pencolor("red")
+    turt.pensize(2)
+    turt.pendown()
+    while True:
+        lon, lat = get_location()
+        if turt.position()[0] > 170 and lon < -170:
+            turt.penup()
+        else:
+            turt.pendown()
+        turt.goto(lon, lat)
+        time.sleep(60)
 
 
 def when_over_location(lat, lon):
